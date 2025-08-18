@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "typecheck": "tsc --noEmit --skipLibCheck",
+    "preview": "vite preview",
+    "test": "npm run typecheck && npm run lint"
   },
   "dependencies": {
     "react": "^19.1.1",
