@@ -1,0 +1,75 @@
+name: Pa11y Accessibility Audit
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  pa11y:
+    name: Pa11y
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    outputs:
+      issue_count: ${{ steps.a11y.outputs.issue_count }}
+    steps:
+      - name: Checkout repository from GitHub
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build app
+        run: npm run build
+
+      - name: Serve preview
+        run: npm run preview & npx wait-on http://localhost:4173
+
+      - name: Run pa11y and parse issues
+        id: a11y
+        run: |
+          set +e   # disable exit-on-error
+          npx pa11y-ci --reporter json > pa11y-results.json
+          code=$?
+          set -e   # re-enable exit-on-error for safety
+
+          if [ $code -eq 2 ]; then
+            total=$(jq '.total' pa11y-results.json)
+            urls=$(jq -r '.results | keys[]' pa11y-results.json)
+
+            text="$total accessibility issue$( [ "$total" -eq 1 ] && echo '' || echo 's') detected."
+
+            for url in $urls; do
+              text+="\n\nResults for $url:"
+
+              issues=$(jq -r --arg url "$url" '
+                .results[$url][] |
+                "\n\n⚠️ \(.type) for \(.code)\n\(.message)\n(\(.selector))\n\(.context)"
+              ' pa11y-results.json)
+
+              text+="$issues"
+            done
+
+            # Escape newlines for GitHub Actions warning annotation
+            escaped_text=$(echo -e "$text" | sed ':a;N;$!ba;s/\n/%0A/g')
+
+            echo "::warning title=Pa11y::$escaped_text"
+            echo "issue_count=$total" >> $GITHUB_OUTPUT
+            exit 0
+          elif [ $code -eq 0 ]; then
+            echo "✅ No accessibility issues found"
+            echo "issue_count=0" >> $GITHUB_OUTPUT
+          else
+            echo "issue_count=0" >> $GITHUB_OUTPUT
+            exit $code
+          fi
+
+  comment-on-pr:
+    needs: pa11y
+    if: needs.pa11y.outputs.issue_count != '0'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment on PR
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: "♿ Pa11y detected ${{ needs.pa11y.outputs.issue_count }} accessibility issue(s) – please review [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,89 @@
+name: Lighthouse Accessibility Audit
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout repository from GitHub
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build app
+        run: npm run build
+
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+  lighthouse:
+    name: Lighthouse
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    needs: build
+    outputs:
+      issue_count: ${{ steps.a11y.outputs.issue_count }}
+    steps:
+      - name: Checkout repository from GitHub
+        uses: actions/checkout@v4
+
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: "./lighthouserc.json"
+          uploadArtifacts: true
+
+      - name: Count Lighthouse accessibility issues
+        id: a11y
+        run: |
+          # Find assertion results
+          assertion_file=$(find .lighthouseci -name 'assertion-results.json' | head -n 1 || true)
+
+          if [ -z "$assertion_file" ] || [ ! -f "$assertion_file" ]; then
+            echo "No Lighthouse assertion results found."
+            echo "issue_count=0" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Count failing accessibility assertions
+          issue_count=$(jq '[.[] | select(.passed == false)] | length' "$assertion_file")
+
+          echo "$issue_count accessibility issue$([ "$issue_count" -eq 1 ] && echo "" || echo "s") detected."
+          echo "issue_count=$issue_count" >> $GITHUB_OUTPUT
+
+      - name: Delete dist artifact
+        uses: geekyeggo/delete-artifact@v5
+        if: always()
+        with:
+          name: dist
+
+  comment-on-pr:
+    needs: lighthouse
+    if: needs.lighthouse.outputs.issue_count != '0'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment on PR
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: "♿ Lighthouse detected ${{ needs.lighthouse.outputs.issue_count }} accessibility issue(s) – please review [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

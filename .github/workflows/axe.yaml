@@ -1,0 +1,78 @@
+name: Axe Accessibility Tests
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  axe:
+    name: Axe
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    outputs:
+      issue_count: ${{ steps.a11y.outputs.issue_count }}
+    steps:
+      - name: Checkout repository from GitHub
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install axe
+        run: npm install -g @axe-core/cli
+
+      - name: Build app
+        run: npm run build
+
+      - name: Serve preview
+        run: npm run preview & npx wait-on http://localhost:4173
+
+      - name: Run axe and parse issues
+        id: a11y
+        run: |
+          axe http://localhost:4173 --tags wcag2aa --stdout > axe-results.json
+
+          total=$(jq '.[0].violations | length' axe-results.json)
+
+          if [ $total -ge 1 ]; then
+            issues=$(jq -r '
+              .[0].violations[] | 
+                "\n\n⚠️ `\(.id)` \(.impact) issue\n" +
+                "\(.description)\n\(.helpUrl)\n" +
+                "Correct invalid elements at:" +
+                "\n(" +
+                (
+                  .nodes
+                  | map(.target | join(", ")) 
+                  | join(", ")
+                ) +
+                ")\n" +
+                (
+                  .nodes
+                  | map(.html)
+                  | join("\n")
+                )
+            ' axe-results.json)
+
+            text="$total accessibility issue$( [ "$total" -eq 1 ] && echo '' || echo 's') detected.$issues"
+
+            # Escape newlines for GitHub Actions warning annotation
+            escaped_text=$(echo -e "$text" | sed ':a;N;$!ba;s/\n/%0A/g')
+
+            echo "::warning title=Axe::$escaped_text"
+            echo "issue_count=$total" >> $GITHUB_OUTPUT
+          elif [ $total -eq 0 ]; then
+            echo "✅ No accessibility issues found"
+            echo "issue_count=0" >> $GITHUB_OUTPUT
+          fi
+
+  comment-on-pr:
+    needs: axe
+    if: needs.axe.outputs.issue_count != '0'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment on PR
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: "♿ Axe detected ${{ needs.axe.outputs.issue_count }} accessibility issue(s) – please review [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
