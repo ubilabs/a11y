@@ -1,69 +1,43 @@
-# React + TypeScript + Vite
+# Accessibility Done Wrong
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project demonstrates how to test against the [WCAG 2.2 Level AA standard](https://www.w3.org/TR/WCAG22/) and ensure accessibility compliance across the full development process.
 
-Currently, two official plugins are available:
+## How We Ensure WCAG 2.2 Level AA Compliance
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Use Figma plugins to create accessible designs](#figma-plugins)
+- [Test accessibility during local development](#local-development-testing)
+- [Run automated accessibility checks in Github Actions](#github-actions)
+- [Configure Gemini Code Assist to include accessibility in code reviews](#gemini-code-assist)
+- [Manual testing](#manual-testing)
 
-## Expanding the ESLint configuration
+## Figma Plugins
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+tbd
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Local Development Testing
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+To catch accessibility issues early in the development cycle, we use the following tools:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) – Linting rules for accessibility in React JSX
+- [@axe-core/react](https://www.npmjs.com/package/@axe-core/react) – Runtime accessibility checks in React apps
+- ...
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Github Actions
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Accessibility checks are integrated into our CI pipeline:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **On every branch**, local development tools continue to run to catch issues early.
+- **On every pull request**, we run additional automated auditing tools that warn about accessibility issues without blocking the merge:
+  - [lighthouse-ci](https://github.com/GoogleChrome/lighthouse-ci)
+  - [pa11y-ci](https://www.npmjs.com/package/pa11y-ci)
+  - [@axe-core/cli](https://www.npmjs.com/package/@axe-core/cli)
+
+## Gemini Code Assist
+
+We configure Gemini Code Assist to enforce accessibility guidelines during code reviews. It follows the requirements defined in our [styleguide.md](.gemini/styleguide.md), ensuring consistent accessibility feedback across the codebase.
+
+## Manual testing
+
+While this project uses various tools to help test accessibility against the [WCAG 2.2 Level AA standard](https://www.w3.org/TR/WCAG22/), it’s important to understand that not all accessibility criteria can be fully validated through automated testing. Many guidelines require manual inspection or individual judgment to achieve full accessibility compliance.
+
+_TODO: Add a guide for manual testing to complement automated checks and ensure the application is truly accessible to all users._
