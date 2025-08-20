@@ -1,4 +1,4 @@
-import style from './App.module.css';
+import styles from './App.module.css';
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <section>
         <header>
           <h2>1.1.1 Non-Text Content</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>
             Provide text alternatives for non-text content that serves the same
             purpose.
@@ -21,7 +21,7 @@ function App() {
       <section>
         <header>
           <h2>1.2.1 Audio-Only and Video-Only (Prerecorded)</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Provide an alternative to video-only and audio-only content.</p>
         </header>
 
@@ -31,7 +31,7 @@ function App() {
       <section>
         <header>
           <h2>1.2.2 Captions (Prerecorded)</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Provide captions for videos with audio.</p>
         </header>
 
@@ -41,7 +41,7 @@ function App() {
       <section>
         <header>
           <h2>1.2.3 Audio Description or Media Alternative (Prerecorded)</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>
             Provide audio description or text transcript for videos with sound.
           </p>
@@ -53,7 +53,7 @@ function App() {
       <section>
         <header>
           <h2>1.2.4 Captions (Live)</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>Add captions to live videos.</p>
         </header>
 
@@ -63,7 +63,7 @@ function App() {
       <section>
         <header>
           <h2>1.2.5 Audio Description (Pre-Recorded)</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>Provide audio descriptions for pre-recorded videos.</p>
         </header>
 
@@ -73,7 +73,7 @@ function App() {
       <section>
         <header>
           <h2>1.3.1 Info and Relationships</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>
             Content, structure and relationships can be programmatically
             determined.
@@ -86,7 +86,7 @@ function App() {
       <section>
         <header>
           <h2>1.3.2 Meaningful Sequence</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Present content in a meaningful order.</p>
         </header>
 
@@ -96,7 +96,7 @@ function App() {
       <section>
         <header>
           <h2>1.3.3 Sensory Characteristics</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Instructions don't rely solely on sensory characteristics.</p>
         </header>
 
@@ -106,7 +106,7 @@ function App() {
       <section>
         <header>
           <h2>1.3.4 Orientation</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>Your website adapts to portrait and landscape views.</p>
         </header>
 
@@ -116,7 +116,7 @@ function App() {
       <section>
         <header>
           <h2>1.3.5 Identify Input Purpose</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>
             The purpose of input fields must be programmatically determinable.
           </p>
@@ -128,7 +128,7 @@ function App() {
       <section>
         <header>
           <h2>1.4.1 Use of Color</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Don't use presentation that relies solely on colour.</p>
         </header>
 
@@ -138,7 +138,7 @@ function App() {
       <section>
         <header>
           <h2>1.4.2 Audio Control</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Don't play audio automatically.</p>
         </header>
 
@@ -148,7 +148,7 @@ function App() {
       <section>
         <header>
           <h2>1.4.3 Contrast Minimum</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>Contrast ratio between text and background is at least 4.5:1.</p>
         </header>
 
@@ -158,7 +158,7 @@ function App() {
       <section>
         <header>
           <h2>1.4.4 Resize Text</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>
             Text can be resized to 200% without loss of content or function.
           </p>
@@ -170,7 +170,7 @@ function App() {
       <section>
         <header>
           <h2>1.4.5 Images of Text</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>Don't use images of text.</p>
         </header>
 
@@ -180,7 +180,7 @@ function App() {
       <section>
         <header>
           <h2>1.4.10 Reflow</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>
             Content retains meaning and function without scrolling in two
             dimensions.
@@ -193,7 +193,7 @@ function App() {
       <section>
         <header>
           <h2>1.4.11 Non-Text Contrast</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>
             The contrast between user interface components, graphics and
             adjacent colours is at least 3:1.
@@ -206,7 +206,7 @@ function App() {
       <section>
         <header>
           <h2>1.4.12 Text Spacing</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>
             Content and function retain meaning when users change elements of
             text spacing.
@@ -219,7 +219,7 @@ function App() {
       <section>
         <header>
           <h2>1.4.13 Content on Hover or Focus</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>
             When hover or focus triggers content to appear, it is dismissible,
             hoverable and persistent.
@@ -232,7 +232,7 @@ function App() {
       <section>
         <header>
           <h2>2.1.1 Keyboard</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>
             All functionality is accessible by keyboard with no specific
             timings.
@@ -245,7 +245,7 @@ function App() {
       <section>
         <header>
           <h2>2.1.2 No keyboard Trap</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Users can navigate to and from all content using a keyboard.</p>
         </header>
 
@@ -255,7 +255,7 @@ function App() {
       <section>
         <header>
           <h2>2.1.4 Character Key Shortcuts</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>
             Allow users to turn off or remap single-key character shortcuts.
           </p>
@@ -267,7 +267,7 @@ function App() {
       <section>
         <header>
           <h2>2.2.1 Timing Adjustable</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>
             Provide user controls to turn off, adjust or extend time limits.
           </p>
@@ -279,7 +279,7 @@ function App() {
       <section>
         <header>
           <h2>2.2.2 Pause, Stop, Hide</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>
             Provide user controls to pause, stop and hide moving and
             auto-updating content.
@@ -292,7 +292,7 @@ function App() {
       <section>
         <header>
           <h2>2.3.1 Three Flashes or Below Threshold</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>No content flashes more than three times per second.</p>
         </header>
 
@@ -302,7 +302,7 @@ function App() {
       <section>
         <header>
           <h2>2.4.1 Bypass Blocks</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Provide a way for users to skip repeated blocks of content.</p>
         </header>
 
@@ -312,7 +312,7 @@ function App() {
       <section>
         <header>
           <h2>2.4.2 Page Titled</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Use helpful and clear page titles.</p>
         </header>
 
@@ -322,7 +322,7 @@ function App() {
       <section>
         <header>
           <h2>2.4.3 Focus Order</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Components receive focus in a logical sequence.</p>
         </header>
 
@@ -332,7 +332,7 @@ function App() {
       <section>
         <header>
           <h2>2.4.4 Link Purpose (In Context)</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Every link's purpose is clear from its text or context.</p>
         </header>
 
@@ -342,7 +342,7 @@ function App() {
       <section>
         <header>
           <h2>2.4.5 Multiple Ways</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>Offer at least two ways to find pages on your website.</p>
         </header>
 
@@ -352,7 +352,7 @@ function App() {
       <section>
         <header>
           <h2>2.4.6 Headings and Labels</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>Headings and labels describe topic or purpose.</p>
         </header>
 
@@ -362,7 +362,7 @@ function App() {
       <section>
         <header>
           <h2>2.4.7 Focus Visible</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>Keyboard focus is visible when used.</p>
         </header>
 
@@ -372,7 +372,7 @@ function App() {
       <section>
         <header>
           <h2>2.4.11 Focus Not Obscured (Minimum)</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>
             When a user interface component is selected, the focus indicator
             encompasses the visual presentation of the component, maintains a
@@ -388,7 +388,7 @@ function App() {
       <section>
         <header>
           <h2>2.5.1 Pointer Gestures</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>
             Multi-point and path-based gestures can be operated with a single
             pointer.
@@ -401,7 +401,7 @@ function App() {
       <section>
         <header>
           <h2>2.5.2 Pointer Cancellation</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Functions don't complete on the down-click of a pointer.</p>
         </header>
 
@@ -411,7 +411,7 @@ function App() {
       <section>
         <header>
           <h2>2.5.3 Label in Name</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>
             Where a component has a text label, the name of the component also
             contains the text displayed.
@@ -424,7 +424,7 @@ function App() {
       <section>
         <header>
           <h2>2.5.4 Motion Actuation</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>
             Functions operated by motion can also be operated through an
             interface and responding to motion can be disabled.
@@ -437,7 +437,7 @@ function App() {
       <section>
         <header>
           <h2>2.5.7 Dragging Movements</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>
             All functionality that uses a dragging movement for operation can be
             achieved by a single pointer without dragging, unless dragging is
@@ -452,7 +452,7 @@ function App() {
       <section>
         <header>
           <h2>2.5.8 Target Size (Minimum)</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>
             Ensure the target of any UI element has 24 by 24 CSS PX target size
             or there is enough spacing provided between two targets that have
@@ -466,7 +466,7 @@ function App() {
       <section>
         <header>
           <h2>3.1.1 Language of Page</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Each webpage has a default human language assigned.</p>
         </header>
 
@@ -476,7 +476,7 @@ function App() {
       <section>
         <header>
           <h2>3.1.2 Language of Parts</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>Each part of a webpage has a default human language assigned.</p>
         </header>
 
@@ -486,7 +486,7 @@ function App() {
       <section>
         <header>
           <h2>3.2.1 On Focus</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Elements do not change when they receive focus.</p>
         </header>
 
@@ -496,7 +496,7 @@ function App() {
       <section>
         <header>
           <h2>3.2.2 On Input</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Elements do not change when they receive input.</p>
         </header>
 
@@ -506,7 +506,7 @@ function App() {
       <section>
         <header>
           <h2>3.2.3 Consistent Navigation</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>Position menus and standard controls consistently.</p>
         </header>
 
@@ -516,7 +516,7 @@ function App() {
       <section>
         <header>
           <h2>3.2.4 Consistent Identification</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>Identify components with the same function consistently.</p>
         </header>
 
@@ -526,7 +526,7 @@ function App() {
       <section>
         <header>
           <h2>3.2.6 Consistent Help</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Help options are presented programmatically in the same order.</p>
         </header>
 
@@ -536,7 +536,7 @@ function App() {
       <section>
         <header>
           <h2>3.3.1 Error Identification</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Identify and describe input errors for users.</p>
         </header>
 
@@ -546,7 +546,7 @@ function App() {
       <section>
         <header>
           <h2>3.3.2 Labels or Instruction</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Provide labels or instructions for user input.</p>
         </header>
 
@@ -556,7 +556,7 @@ function App() {
       <section>
         <header>
           <h2>3.3.3 Error Suggestion</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>Suggest corrections when users make mistakes.</p>
         </header>
 
@@ -566,7 +566,7 @@ function App() {
       <section>
         <header>
           <h2>3.3.4 Error Prevention (Legal, Financial, Data)</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>
             Check, confirm and allow reversal of pages that cause important
             commitments.
@@ -579,7 +579,7 @@ function App() {
       <section>
         <header>
           <h2>3.3.7 Redundant Entry</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>Autofill form- fields that repeat across steps.</p>
         </header>
 
@@ -589,7 +589,7 @@ function App() {
       <section>
         <header>
           <h2>3.3.8 Accessible Authentication (Minimum)</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>
             It states that users must be able to access authentication methods
             using only a keyboard. This means that the authentication process
@@ -603,7 +603,7 @@ function App() {
       <section>
         <header>
           <h2>4.1.2 Name, Role, Value</h2>
-          <span className={style.level}>Level A</span>
+          <span className={styles.level}>Level A</span>
           <p>
             The name and role of user components can be understood by
             technology.
@@ -616,7 +616,7 @@ function App() {
       <section>
         <header>
           <h2>4.1.3 Status Messages</h2>
-          <span className={style.level}>Level AA</span>
+          <span className={styles.level}>Level AA</span>
           <p>
             Make sure that all messages indicating success or errors are read
             out by a screen reader.
