@@ -1,4 +1,4 @@
-#root {
+:global(#root) {
   display: grid;
   gap: 4rem;
   max-width: 50rem;
@@ -23,4 +23,11 @@ section > header {
 
 section > header > p {
   grid-column: 1 / -1;
+}
+
+.level {
+  margin-block-end: var(--ubilabs-default-font-margin-block-end);
+  font-weight: 500;
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.6;
 }
