@@ -12,10 +12,18 @@ h1 {
 
 section {
   display: grid;
-  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media screen and (max-width: 600px) {
+  section {
+    grid-template-columns: 1fr;
+  }
 }
 
 section > header {
+  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -30,4 +38,27 @@ section > header > p {
   font-weight: 500;
   font-size: 1.25rem; /* 20px */
   line-height: 1.6;
+}
+
+ul {
+  margin: 0;
+  padding-left: 1.25em;
+}
+
+img,
+audio,
+video {
+  width: 100%;
+}
+
+.transcript {
+  color: #aaa;
+}
+
+.transcript h3 {
+  font-size: 1rem; /* 16px */
+}
+
+.transcript p {
+  font-size: 0.875rem; /* 14px */
 }

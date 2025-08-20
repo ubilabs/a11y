@@ -44,6 +44,7 @@ body {
   font-family: var(--ubilabs-font-family);
   font-size: var(--ubilabs-default-font-size);
   line-height: var(--ubilabs-default-line-height);
+  text-wrap: balance;
 }
 
 h1,

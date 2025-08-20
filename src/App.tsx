@@ -15,7 +15,16 @@ function App() {
           </p>
         </header>
 
-        {/* TODO: Add example content here that violates this accessibility rule */}
+        <img src="https://picsum.photos/id/237/640/360" />
+
+        <div>
+          <h3>Why this violates the rule</h3>
+          <ul>
+            <li>
+              The <code>&lt;img&gt;</code> tag has no alt attribute at all.
+            </li>
+          </ul>
+        </div>
       </section>
 
       <section>
@@ -25,7 +34,36 @@ function App() {
           <p>Provide an alternative to video-only and audio-only content.</p>
         </header>
 
-        {/* TODO: Add example content here that violates this accessibility rule */}
+        <audio controls>
+          <source src="./audio_1-2-1.mp3" type="audio/mpeg" />
+          Your browser does not support the audio tag.
+        </audio>
+
+        <div>
+          <h3>Why this violates the rule</h3>
+          <ul>
+            <li>There's no transcript or text alternative.</li>
+            <li>
+              Important info (time, instructions) is only available in audio.
+            </li>
+          </ul>
+        </div>
+
+        <video controls>
+          <source src="./video_1-2-1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        <div>
+          <h3>Why this violates the rule</h3>
+          <ul>
+            <li>There's no audio description or text alternative.</li>
+            <li>
+              Important info (how to cut the corn off the cob) is only available
+              in video.
+            </li>
+          </ul>
+        </div>
       </section>
 
       <section>
@@ -35,7 +73,26 @@ function App() {
           <p>Provide captions for videos with audio.</p>
         </header>
 
-        {/* TODO: Add example content here that violates this accessibility rule */}
+        <video controls>
+          <source src="./video_1-2-2.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        <div>
+          <h3>Why this violates the rule</h3>
+          <ul>
+            <li>
+              The video contains spoken dialogue, but no captions are provided.
+            </li>
+            <li>
+              Deaf or hard-of-hearing users cannot access the spoken content.
+            </li>
+            <li>
+              Captions are required to present both dialogue and relevant sound
+              effects.
+            </li>
+          </ul>
+        </div>
       </section>
 
       <section>
@@ -43,11 +100,29 @@ function App() {
           <h2>1.2.3 Audio Description or Media Alternative (Prerecorded)</h2>
           <span className={styles.level}>Level A</span>
           <p>
-            Provide audio description or text transcript for videos with sound.
+            Provide audio description or a text alternative for videos with
+            sound and meaningful visual content.
           </p>
         </header>
 
-        {/* TODO: Add example content here that violates this accessibility rule */}
+        <video controls>
+          <source src="./video_1-2-3.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        <div>
+          <h3>Why this violates the rule</h3>
+          <ul>
+            <li>
+              The video includes important visual information that is not
+              described in the audio.
+            </li>
+            <li>
+              Users who are blind or have low vision cannot access this content
+              fully.
+            </li>
+          </ul>
+        </div>
       </section>
 
       <section>
@@ -57,17 +132,72 @@ function App() {
           <p>Add captions to live videos.</p>
         </header>
 
-        {/* TODO: Add example content here that violates this accessibility rule */}
+        <video controls autoPlay loop muted>
+          <source src="./video_1-2-4.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        <div>
+          <h3>Why this violates the rule</h3>
+          <ul>
+            <li>The video simulates a live event with spoken content.</li>
+            <li>No real-time captions are provided.</li>
+            <li>
+              Deaf or hard-of-hearing users cannot follow the spoken dialogue as
+              it happens.
+            </li>
+          </ul>
+        </div>
       </section>
 
       <section>
         <header>
-          <h2>1.2.5 Audio Description (Pre-Recorded)</h2>
+          <h2>1.2.5 Audio Description (Prerecorded)</h2>
           <span className={styles.level}>Level AA</span>
-          <p>Provide audio descriptions for pre-recorded videos.</p>
+          <p>
+            Provide audio descriptions for videos with sound and important
+            visual content.
+          </p>
         </header>
 
-        {/* TODO: Add example content here that violates this accessibility rule */}
+        <div>
+          <video controls>
+            <source src="./video_1-2-5.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+
+          <div className={styles.transcript}>
+            <h3>Transcript</h3>
+            <p>
+              [00:00] SpongeBob SquarePants jumps around his living room, picks
+              up his name tag, and joyfully sings, “It’s Monday. It’s Monday.
+              It’s Monday!”
+            </p>
+            <p>
+              [00:05] He leaves his pineapple house and twirls down the street,
+              still singing, “Thank gosh it’s Mondaaaay!!!” while dancing
+              enthusiastically.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h3>Why this violates the rule</h3>
+          <ul>
+            <li>
+              The video includes important visual details that are not described
+              in the audio.
+            </li>
+            <li>
+              No audio description is included, either as part of the main audio
+              track or as an alternate track.
+            </li>
+            <li>
+              A transcript is not sufficient at this level — blind or low-vision
+              users miss visual context in real time.
+            </li>
+          </ul>
+        </div>
       </section>
 
       <section>
